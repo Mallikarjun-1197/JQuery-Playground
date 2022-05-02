@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title></title>
+</head>
+<body>
+
+<!--     <h1>Welcome !</h1>
+    <img src="https://picsum.photos/200/300" alt="" />
+
+
+    <table id="example">
+        <tr>
+            <td>Name</td>
+            <td>Age</td>
+        </tr>
+        <tr>
+        <td>Mallik</td>
+        <td>24</td>
+        </tr>
+        <tr>
+        <td>Vineel</td>
+        <td>24</td>
+        </tr>
+        <tr>
+        <td>Arun</td>
+        <td>24</td>
+        </tr>
+    </table> -->
+
+    <ul id="list">
+        <li>First El</li>
+        <li>Second El</li>
+        <li>Third El</li>
+        <li>Fourth El</li>
+        <li>Fifth El</li>
+    </ul>
+
+    <input type="button" value="Button"/>
+    <input type="submit" value="Submit"/>
+    <input type="text" value="Text"/>
+    <input type="reset" value="Reset"/>
+<br/>
+<br/>
+<br/>
+    <button id="toggler">Hide/UnHide para</button>
+
+    <p id="para">This is a paragraph...****</p>
+
+
+    <hr/>
+
+<form id="form">
+    <label>Name</label>
+    <input type="text" id="name" name="name"/>
+    <br/>
+    <br/>
+    <label>Email</label>
+    <input type="email" id="email" name="email"/>
+    <br/>
+    <br/>
+    <input type="submit" value="submit"/>
+</form>
+
+
+
+
+    <script type="text/javascript">
+
+
+
+        // First Document.Ready is invoked because all it cares is if the DOM is havnig a tag.
+        //Window.onLoad is hit later when all the content in tags are loaded.
+        var winLoadTime, docLoadTime;
+       /*  window.onload = () => {
+            winLoadTime = new Date().getTime();
+            console.log("Window.on load called" + "Time Diff:" + winLoadTime - docLoadTime);
+        }
+
+        $("#document").ready(function () {
+            docLoadTime = new Date().getTime();
+            console.log("Document ready" + "Time Diff:" + winLoadTime - docLoadTime);
+
+            //to get a cell of a table.
+            var name = $("#example tr:nth-child(2) td:nth-child(1)").text();
+            console.log(name);
+        }
+        ) */
+
+        $('ul#list li').css('list-style','none');
+        $('ul#list li:nth-child(2n)').css('background-color','pink');
+        $('ul#list li:nth-child(2n+1)').css('background-color','grey');
+
+// To hide button which have type property using jquery we use follwoing syntax:
+$(':reset').hide();
+
+//to hide entire content..
+//$('*').hide();
+
+        $('#toggler').on('click',function(){
+            $('#para').toggle();
+        })
+
+        //above statement can also be written as 
+        /* $('#toggler').click(function(){
+            $('#para').toggle();
+        }) */
+
+        //hover is a syntatic sugar or 2 events when we want to write hover using on the we use
+        //mouseenter, mouseleave events.
+
+        /* $('#toggler').hover(function(){
+            $('#para').toggle();
+        }) */
+
+        $('#toggler').on('mouseenter',function(){
+            $('#para').toggle();
+        })
+
+        $('#toggler').on('mouseleave',function(){
+            $('#para').toggle();
+        })
+
+        // this is a perfect use case of this.
+        $('input').focus(function(){
+            $(this).css('background-color','pink');
+        })
+        $('input').blur(function(){
+            $(this).css('background-color','white');
+        })
+
+        $('#form').submit(function(e){
+            e.preventDefault();
+            var name  = $('input#name').val(); // Note this is how we access content.
+            alert(name);
+        })
+
+        //events in jquery
+        //Mouse Events : Mouseenter, mouseleave, click , dbclick/
+        //Form : submit, blur, focus, change
+        //keyboard : keypress, keyup, keydown.
+        //document/window : load, resize, scroll, unload.
+
+        // few methods of jquery
+        //1. .css(prop, val)
+        //2. .addClass('CLASSNAME')
+        //3. .removeClass('CNAME');
+        //4  .append
+        //5  .prepend
+        //6 . .text() and .html() and .empty() . .val() // use .val and .text  for text type fields.
+    </script>
+</body>
+</html>
